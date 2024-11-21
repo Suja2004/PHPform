@@ -5,7 +5,7 @@ $(document).ready(function () {
         const formData = $(this).serialize(); // Serialize form data
 
         $.ajax({
-            url: 'http://localhost:3000/backend/process.php', // Update with your backend URL
+            url: 'https://php-yimr.onrender.com/process.php', // Update with your backend URL
             type: 'POST',
             data: formData,
             success: function (response) {
