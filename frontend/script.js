@@ -1,19 +1,18 @@
 $(document).ready(function () {
     $('#registrationForm').on('submit', function (event) {
-        event.preventDefault(); 
+        event.preventDefault(); // Prevent default form submission
 
-        const formData = $(this).serialize();
+        const formData = $(this).serialize(); // Serialize form data
 
         $.ajax({
-            url: 'process.php',
+            url: 'http://localhost:3000/backend/process.php', // Update with your backend URL
             type: 'POST',
             data: formData,
             success: function (response) {
-                $('#response').html(response).fadeIn();
-                $('#registrationForm')[0].reset(); 
+                $('#response').html(response).fadeIn(); // Display response
             },
-            error: function () {
-                $('#response').html('<p style="color:red;">There was an error processing your request.</p>').fadeIn();
+            error: function (xhr, status, error) {
+                $('#response').html('<p style="color:red;">Error: ' + error + '</p>').fadeIn();
             }
         });
     });
